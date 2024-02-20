@@ -24,7 +24,7 @@ class AuthenticatedSessionController extends Controller
 
         // return response()->noContent();
 
-        $credentials = $request->only('email', 'password');
+        $credentials = $request->only('email', 'password',);
         if (!Auth::attempt($credentials)) {
             return response()->json(['message' => 'Unauthorized'], 401);
         }
