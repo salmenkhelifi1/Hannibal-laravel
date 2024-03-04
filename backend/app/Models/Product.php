@@ -16,14 +16,15 @@ class Product extends Model
         'available',
         'rate',
         'quantity',
-        'sellerProduct',
+        'seller_id',
         'img2',
         'img3',
         'img4',
     ];
 
 
-public function seller()
-{
-    return $this->belongsTo(User::class, 'sellerProduct');
-}}
+    public function seller()
+    {
+        return $this->belongsTo(User::class, 'seller_id');
+    }
+}

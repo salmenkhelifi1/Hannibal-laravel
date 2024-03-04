@@ -23,11 +23,11 @@ class CreateProductsCategoriesCartsWishlistsTables extends Migration
             $table->tinyInteger('available')->default(1);
             $table->integer('rate')->nullable()->default(0);
             $table->integer('quantity')->nullable()->default(0);
-            $table->unsignedBigInteger('sellerProduct');
+            $table->unsignedBigInteger('seller_id');
             $table->longText('img2');
             $table->longText('img3');
             $table->longText('img4');
-            $table->foreign('sellerProduct')->references('id')->on('users')->onDelete('RESTRICT')->onUpdate('RESTRICT');
+            $table->foreign('seller_id')->references('id')->on('users')->onDelete('RESTRICT')->onUpdate('RESTRICT');
             $table->timestamps();
         });
 
@@ -36,21 +36,21 @@ class CreateProductsCategoriesCartsWishlistsTables extends Migration
             $table->id();
             $table->string('name');
             $table->string('image')->nullable();
-       
+
             $table->timestamps();
         });
 
         // Create carts table
         Schema::create('carts', function (Blueprint $table) {
             $table->id();
-         
+
             $table->timestamps();
         });
 
         // Create wishlists table
         Schema::create('wishlists', function (Blueprint $table) {
             $table->id();
-         
+
             $table->timestamps();
         });
     }
